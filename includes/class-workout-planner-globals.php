@@ -1,9 +1,7 @@
 <?php
 
 /**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * Global Parameters that are used in the plugin.
  */
 class Workout_Planner_Globals {
 

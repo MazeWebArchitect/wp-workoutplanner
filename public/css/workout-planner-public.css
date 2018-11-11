@@ -1,0 +1,19 @@
+
+/*------ BUTTONS ------*/
+
+/* Small-Button */
+.workout-planner-button-sm {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 12px 44px;
+    text-decoration: none;
+}
+    .workout-planner-button-sm:active {
+        position: relative;
+        top: 1px;
+    }

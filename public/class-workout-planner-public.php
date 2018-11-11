@@ -43,12 +43,20 @@ class Workout_Planner_Public {
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
-	 *
+	 * Main Style = All plugin specific custom styles
+     * PureCSS = Grid-template from https://purecss.io/
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/workout-planner-public.css', array(), $this->version, 'all' );
+        wp_register_style( $this->plugin_name . '-main-style', plugin_dir_url( __FILE__ ) . 'css/workout-planner-public.css', array(), $this->version, 'all' );
+        wp_register_style( $this->plugin_name . '-purecss-base', plugin_dir_url( __FILE__ ) . 'css/inc/purecss/base-min.css', array(), $this->version, 'all' );
+        wp_register_style( $this->plugin_name . '-purecss-grids', plugin_dir_url( __FILE__ ) . 'css/inc/purecss/grids-min.css', array(), $this->version, 'all' );
+        wp_register_style( $this->plugin_name . '-purecss-grids-resp', plugin_dir_url( __FILE__ ) . 'css/inc/purecss/grids-responsive-min.css', array(), $this->version, 'all' );
+        wp_enqueue_style( $this->plugin_name . '-main-style' );
+        wp_enqueue_style( $this->plugin_name . '-purecss-base' );
+        wp_enqueue_style( $this->plugin_name . '-purecss-grids' );
+        wp_enqueue_style( $this->plugin_name . '-purecss-grids-resp' );
 
 	}
 

@@ -25,7 +25,9 @@ class Workout_Planner_Activator {
 		require_once plugin_dir_path( __FILE__ ) . 'class-workout-planner-globals.php';
 		global $wpdb;
 		global $workoutplanner_db_version;
+
 		$workoutplanner_db_version = Workout_Planner_Globals::database_version();
+        add_option( 'workoutplanner_db_version', $workoutplanner_db_version );
 
 		$maintable = Workout_Planner_Globals::main_table();
 		$metatable = Workout_Planner_Globals::meta_table();
@@ -59,10 +61,8 @@ class Workout_Planner_Activator {
 		) $charset_collate;";
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		dbDelta( $sqlmain );
-		dbDelta( $sqlmeta );
+		dbDelta( [$sqlmain, $sqlmeta] );
 
-		add_option( 'workoutplanner_db_version', $workoutplanner_db_version );
 	}
 
 	public static function insert_dummy_data() {
