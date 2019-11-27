@@ -74,8 +74,20 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-workout-planner.php';
  */
 function run_workout_planner() {
 
+	define( 'WP_WORKOUT_PLANNER_FILE', __FILE__ );
+
+	// Defines the path to be used for includes
+	define( 'WP_WORKOUT_PLANNER_PATH', plugin_dir_path( WP_WORKOUT_PLANNER_FILE ) );
+
+	// Defines the URL to the plugin
+	define( 'WP_WORKOUT_PLANNER_URL', plugin_dir_url( WP_WORKOUT_PLANNER_FILE ) );
+
+	// Defines the current version of the plugin
+	define( 'WP_WORKOUT_PLANNER_VERSION', '1.0.0' );
+
 	$plugin = new Workout_Planner();
 	$plugin->run();
+
 
 }
 run_workout_planner();

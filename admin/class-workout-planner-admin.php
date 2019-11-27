@@ -63,4 +63,25 @@ class Workout_Planner_Admin {
 
 	}
 
+	/**
+	 * Register any menu pages used by the plugin.
+	 * @since  1.0.0
+	 * @access public
+	 */
+	public function wp_workout_planner_menu_pages() {
+
+		add_menu_page (
+			__( 'Manage the Workout Planner', 'wp-workout-planner' ),
+			__( 'Workout Planner', 'wp-workout-planner' ),
+			'manage_options',
+			WP_WORKOUT_PLANNER_PATH. 'admin/partials/workout-planner-admin-display.php',
+			'',
+			'',
+			26 // After the "Comments" section
+		);
+
+		add_action( 'admin_menu', 'wp_workout_planner_menu_pages' );
+
+	}
+
 }
