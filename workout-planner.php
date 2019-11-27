@@ -56,7 +56,6 @@ register_deactivation_hook( __FILE__, 'deactivate_workout_planner' );
  * Define and register all shortcodes used by the plugin.
  */
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-workout-planner-shortcodes.php';
-include('public\partials\workout-planner-public-display.php');
 
 /**
  * The core plugin class that is used to define internationalization,

@@ -37,26 +37,27 @@ class Workout_Planner_Activator {
 		$sqlmain = "CREATE TABLE $maintable (
 		  id mediumint(9) NOT NULL AUTO_INCREMENT,
 		  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-		  planname tinytext NOT NULL,
-		  workoutday smallint NOT NULL,
-		  totalworkoutweeks SMALLINT NOT NULL,
-		  zoneintensity smallint,
+		  fk_user int,
+		  plan_name tinytext NOT NULL,
+		  workout_day smallint NOT NULL,
+		  total_workout_weeks smallint NOT NULL,
+		  zone_intensity smallint,
 		  PRIMARY KEY  (id)
 		) $charset_collate;";
 
 		$sqlmeta = "CREATE TABLE $metatable (
 		  id mediumint(9) NOT NULL AUTO_INCREMENT,
 		  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-		  plannid mediumint(9) NOT NULL,
-		  trainingzone text,
+		  fk_plan_id mediumint(9) NOT NULL,
+		  training_zone text,
 		  week tinyint NOT NULL,
 		  exercise text NOT NULL,
 		  description text NOT NULL,
 		  quantity smallint NOT NULL,
 		  repetitions smallint NOT NULL,
-		  weightortime mediumint DEFAULT 0,
+		  weight_or_time mediumint DEFAULT 0,
 		  finished boolean DEFAULT false NOT NULL,
-		  unfinishreason text,
+		  reason_not_finishing text,
 		  PRIMARY KEY  (id)
 		) $charset_collate;";
 
@@ -71,49 +72,50 @@ class Workout_Planner_Activator {
 
 		/* Dummy Data for MAIN Table */
 		$main_table = Workout_Planner_Globals::main_table();
-		$planname = 'Upper-Body Day 1';
-		$workoutday = 1;
-		$totalworkoutweeks = 8;
-		$zoneintesity = 4;
+		$plan_name = 'Upper-Body Day 1';
+		$workout_day = 1;
+		$total_workout_weeks = 8;
+		$zone_intensity = 4;
 
 		$wpdb->insert(
 			$main_table,
 			array(
 				'time' => current_time( 'mysql' ),
-				'planname' => $planname,
-				'workoutday' => $workoutday,
-				'totalworkoutweeks' => $totalworkoutweeks,
-				'zoneintensity' => $zoneintesity,
+				'fk_user' => null,
+				'plan_name' => $plan_name,
+				'workout_day' => $workout_day,
+				'total_workout_weeks' => $total_workout_weeks,
+				'zone_intensity' => $zone_intensity,
 			)
 		);
 
 		/* Dummy Data for META Table */
 		$meta_table = Workout_Planner_Globals::meta_table();
-		$plannid = 1;
-		$trainingzone = 'Upper Body';
+		$plan_id = 1;
+		$training_zone = 'Upper Body';
 		$week = 1;
 		$exercise = 'Bench Press';
 		$description = 'Slow and clean movements';
 		$quantity = 5;
 		$repetitions = 4;
-		$weightortime = 35;
+		$weight_or_time = 35;
 		$finished = false;
-		$unfinishreason = 'Too hard';
+		$reason_not_finishing = 'Too hard';
 
 		$wpdb->insert(
 			$meta_table,
 			array(
 				'time' => current_time( 'mysql' ),
-				'plannid' => $plannid,
-				'trainingzone' => $trainingzone,
+				'fk_plan_id' => $plan_id,
+				'training_zone' => $training_zone,
 				'week' => $week,
 				'exercise' => $exercise,
 				'description' => $description,
 				'quantity' => $quantity,
 				'repetitions' => $repetitions,
-				'weightortime' => $weightortime,
+				'weight_or_time' => $weight_or_time,
 				'finished' => $finished,
-				'unfinishreason' => $unfinishreason,
+				'reason_not_finishing' => $reason_not_finishing,
 			)
 		);
 	}
