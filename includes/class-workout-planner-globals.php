@@ -5,6 +5,14 @@
  */
 class Workout_Planner_Globals {
 
+	public static function required_php_version() {
+		return 7.2;
+	}
+
+	public static function required_wp_version() {
+		return 4.7;
+	}
+
 	public static function database_version() {
 		return '1.0';
 	}

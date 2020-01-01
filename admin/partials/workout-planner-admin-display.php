@@ -13,5 +13,15 @@
  */
 ?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<h1>Test</h1>
+<?php
+    require_once WP_WORKOUT_PLANNER_PATH . '/includes/class-workout-planner-globals.php';
+?>
+
+
+<?php
+/*
+ * Check if the plugin can run on this WordPress installation.
+ */
+    include 'workout-planner-run-checker.php';
+?>
+
