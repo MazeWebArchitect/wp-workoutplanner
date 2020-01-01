@@ -13,9 +13,10 @@
 class Workout_Planner_Deactivator {
 
 	/**
-	 * Short Description. (use period)
+	 * Delete all data associated with the plugin.
 	 *
-	 * Long Description.
+	 * Delete the Databasetables (Main and Meta)
+	 * Also delete all the metadata in the wp_usermeta (workoutplanner_usergroup)
 	 *
 	 * @since    1.0.0
 	 */
