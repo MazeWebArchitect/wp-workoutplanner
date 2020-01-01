@@ -24,11 +24,11 @@ class Workout_Planner_Deactivator {
 		global $wpdb;
 		$main_table = Workout_Planner_Globals::main_table();
 		$meta_table = Workout_Planner_Globals::meta_table();
+		$wp_user_meta_key = Workout_Planner_Globals::wp_user_meta_key();
 
 		$sql = "DROP TABLE IF EXISTS $main_table, $meta_table";
-
 		$wpdb->query($sql);
-
+		delete_metadata('user', 0, $wp_user_meta_key, '', true);
 		delete_option( 'workoutplanner_db_version' );
 
 	}

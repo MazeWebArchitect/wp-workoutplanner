@@ -38,10 +38,10 @@ class Workout_Planner_Activator {
 		  id mediumint(9) NOT NULL AUTO_INCREMENT,
 		  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 		  fk_user int,
+		  wp_user_group int,
 		  plan_name tinytext NOT NULL,
-		  workout_day smallint NOT NULL,
-		  total_workout_weeks smallint NOT NULL,
-		  zone_intensity smallint,
+		  total_workout_weeks smallint,
+		  focus_zones smallint,
 		  PRIMARY KEY  (id)
 		) $charset_collate;";
 
@@ -50,6 +50,7 @@ class Workout_Planner_Activator {
 		  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 		  fk_plan_id mediumint(9) NOT NULL,
 		  training_zone text,
+		  workout_day tinyint,
 		  week tinyint NOT NULL,
 		  exercise text NOT NULL,
 		  description text NOT NULL,
@@ -73,9 +74,8 @@ class Workout_Planner_Activator {
 		/* Dummy Data for MAIN Table */
 		$main_table = Workout_Planner_Globals::main_table();
 		$plan_name = 'Upper-Body Day 1';
-		$workout_day = 1;
 		$total_workout_weeks = 8;
-		$zone_intensity = 4;
+		$focus_zones = 4;
 
 		$wpdb->insert(
 			$main_table,
@@ -83,9 +83,8 @@ class Workout_Planner_Activator {
 				'time' => current_time( 'mysql' ),
 				'fk_user' => null,
 				'plan_name' => $plan_name,
-				'workout_day' => $workout_day,
 				'total_workout_weeks' => $total_workout_weeks,
-				'zone_intensity' => $zone_intensity,
+				'focus_zones' => $focus_zones,
 			)
 		);
 
@@ -93,6 +92,7 @@ class Workout_Planner_Activator {
 		$meta_table = Workout_Planner_Globals::meta_table();
 		$plan_id = 1;
 		$training_zone = 'Upper Body';
+		$workout_day = 3;
 		$week = 1;
 		$exercise = 'Bench Press';
 		$description = 'Slow and clean movements';
@@ -108,6 +108,7 @@ class Workout_Planner_Activator {
 				'time' => current_time( 'mysql' ),
 				'fk_plan_id' => $plan_id,
 				'training_zone' => $training_zone,
+				'workout_day' => $workout_day,
 				'week' => $week,
 				'exercise' => $exercise,
 				'description' => $description,
@@ -118,6 +119,7 @@ class Workout_Planner_Activator {
 				'reason_not_finishing' => $reason_not_finishing,
 			)
 		);
+
 	}
 
 }

@@ -19,4 +19,8 @@ class Workout_Planner_Globals {
 		return $workoutplanner_meta_table = $wpdb->prefix . "workoutplanner_plan_meta";
 	}
 
+	public static function wp_user_meta_key() {
+		return "workoutplanner_usergroup";
+	}
+
 }
